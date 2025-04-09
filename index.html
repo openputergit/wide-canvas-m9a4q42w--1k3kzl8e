@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services & Events App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(120deg, #6366f1 0%, #dc2626 100%);
+        }
+        .bottom-nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .status-bar {
+            height: 24px;
+            background: #000;
+            color: white;
+        }
+        .slide-dots {
+            bottom: 10px;
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.5;
+        }
+        .dot.active {
+            opacity: 1;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col max-w-md mx-auto relative">
+    <!-- Status Bar -->
+    <div class="status-bar flex justify-between px-4 items-center">
+        <span>5:30</span>
+        <div class="flex gap-2">
+            <i class="bi bi-reception-4"></i>
+            <i class="bi bi-wifi"></i>
+            <i class="bi bi-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-gray-900 text-white p-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <i class="bi bi-list text-2xl"></i>
+            <span class="font-bold">HOME</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <i class="bi bi-qr-code text-xl"></i>
+            <i class="bi bi-bell text-xl"></i>
+            <i class="bi bi-headset text-xl"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-4">
+        <!-- Banner Slider -->
+        <div class="relative rounded-xl overflow-hidden mb-6 h-48">
+            <div class="gradient-bg w-full h-full"></div>
+            <div class="slide-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <span class="absolute bottom-2 left-2 text-white text-sm bg-black bg-opacity-50 px-2 rounded">Ad</span>
+        </div>
+
+        <!-- Emergency Services -->
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-4">Emergency Services</h2>
+            <div class="grid grid-cols-5 gap-4">
+                <button class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <i class="bi bi-trophy text-gray-600"></i>
+                    </div>
+                    <span class="text-xs">Pet Care</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <i class="bi bi-car-front text-gray-600"></i>
+                    </div>
+                    <span class="text-xs">Police</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <i class="bi bi-plus-circle text-gray-600"></i>
+                    </div>
+                    <span class="text-xs">Medical</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <i class="bi bi-fire text-gray-600"></i>
+                    </div>
+                    <span class="text-xs">Fire</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <i class="bi bi-exclamation-triangle text-gray-600"></i>
+                    </div>
+                    <span class="text-xs">SOS</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">Upcoming events</h2>
+                <a href="#" class="text-green-500 text-sm">View all</a>
+            </div>
+            <div class="rounded-xl overflow-hidden bg-white shadow-lg">
+                <img src="https://source.unsplash.com/random/800x400/?concert" alt="Event" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-xl mb-2">Tomorrowland</h3>
+                    <div class="flex items-center gap-2 text-gray-600 mb-2">
+                        <i class="bi bi-calendar"></i>
+                        <span>Sat, 15 Mar, 2025 | Time: 15:00 to 04:00</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600 mb-4">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>MS Dhoni Pavallion, Ranchi</span>
+                    </div>
+                    <button class="bg-green-500 text-white px-6 py-2 rounded-lg">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div>
+            <h2 class="text-lg font-semibold mb-4">Features</h2>
+            <div class="grid grid-cols-5 gap-4">
+                <button class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-1">
+                        <i class="bi bi-shop text-blue-600"></i>
+                    </div>
+                    <span class="text-xs">Hyper-Mart</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-xl bg-red-100 flex items-center justify-center mb-1">
+                        <i class="bi bi-cup-hot text-red-600"></i>
+                    </div>
+                    <span class="text-xs">Food court</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-xl bg-green-100 flex items-center justify-center mb-1">
+                        <i class="bi bi-ticket text-green-600"></i>
+                    </div>
+                    <span class="text-xs">Events</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-1">
+                        <i class="bi bi-tools text-blue-600"></i>
+                    </div>
+                    <span class="text-xs">Hyperlocal</span>
+                </button>
+                <button class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-xl bg-yellow-100 flex items-center justify-center mb-1">
+                        <i class="bi bi-person text-yellow-600"></i>
+                    </div>
+                    <span class="text-xs">Account</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav fixed bottom-0 w-full max-w-md h-16 px-6 flex justify-between items-center text-white">
+        <button class="flex flex-col items-center text-red-500">
+            <i class="bi bi-house-fill text-xl"></i>
+            <span class="text-xs mt-1">Home</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="bi bi-search text-xl"></i>
+            <span class="text-xs mt-1">Search</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="bi bi-calendar-event text-xl"></i>
+            <span class="text-xs mt-1">Events</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="bi bi-megaphone text-xl"></i>
+            <span class="text-xs mt-1">Offers</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="bi bi-currency-rupee text-xl"></i>
+            <span class="text-xs mt-1">Payments</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="bi bi-cart text-xl"></i>
+            <span class="text-xs mt-1">Cart</span>
+        </button>
+    </nav>
+
+    <script>
+        // Banner Slider
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            currentSlide = (currentSlide + 1) % dots.length;
+        }
+
+        setInterval(updateSlider, 3000);
+
+        // Emergency Services
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 100);
+            });
+        });
+
+        // Book Now Button
+        document.querySelector('.bg-green-500').addEventListener('click', function() {
+            alert('Booking process initiated!');
+        });
+
+        // Bottom Navigation
+        const navButtons = document.querySelectorAll('.bottom-nav button');
+        navButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                navButtons.forEach(btn => btn.classList.remove('text-red-500'));
+                this.classList.add('text-red-500');
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
